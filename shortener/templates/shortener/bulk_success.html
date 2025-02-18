@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Bulk URL Shortening Success</h1>
+  <p>The following URLs have been successfully shortened:</p>
+  <ul>
+    {% for url in created_urls %}
+      <li>
+        Short Code:
+        <a href="{% url 'shortener:redirect' short_code=url.short_code %}">
+          {{ url.short_code }}
+        </a>
+        — Original URL:
+        <a href="{{ url.long_url }}" target="_blank">{{ url.long_url }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <p>
+    <a href="{% url 'shortener:create' %}" class="btn btn-primary">Shorten another URL</a>
+  </p>
+{% endblock %}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}URL Shortener{% endblock %}</title>
-  <!-- Bootstrap CSS for styling -->
+  <!-- Bootstrap CSS for quick styling -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -17,13 +17,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <!-- Home Button -->
+        <!-- Home -->
         <li class="nav-item">
           <a class="nav-link" href="{% url 'shortener:create' %}">Home</a>
         </li>
-        <!-- Analytics Button -->
+        <!-- Analytics -->
         <li class="nav-item">
           <a class="nav-link" href="{% url 'shortener:analytics' %}">View Analytics</a>
+        </li>
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shortener:dashboard' %}">Dashboard</a>
+        </li>
+        <!-- Bulk Shortening -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shortener:bulk' %}">Bulk Shortening</a>
         </li>
       </ul>
     </div>
@@ -31,8 +39,7 @@
 
   <!-- Main Content -->
   <div class="container mt-4">
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
   </div>
 
   <!-- Bootstrap JS & dependencies -->

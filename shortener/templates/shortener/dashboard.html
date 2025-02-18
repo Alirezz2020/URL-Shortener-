@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Your Dashboard</h1>
+  {% if shorturls %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Short Code</th>
+          <th>Original URL</th>
+          <th>Clicks</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for url in shorturls %}
+          <tr>
+            <td>
+              <a href="{% url 'shortener:detail' short_code=url.short_code %}">
+                {{ url.short_code }}
+              </a>
+            </td>
+            <td>{{ url.long_url }}</td>
+            <td>{{ url.click_count }}</td>
+            <td>{{ url.created_at|date:"Y-m-d H:i" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You haven't shortened any URLs yet.</p>
+  {% endif %}
+{% endblock %}

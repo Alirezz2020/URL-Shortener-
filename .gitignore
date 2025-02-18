@@ -1,0 +1,44 @@
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore environment variables and settings
+.env
+*.env
+
+# Ignore Django migrations
+*/migrations/*
+
+# Ignore SQLite database
+db.sqlite3
+*.sqlite3
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore compiled files
+*.so
+*.dll
+*.dylib
+*.pyd
+
+# Ignore IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore virtual environments
+venv/
+.venv/
+
+# Ignore static and media files
+/staticfiles/
+/media/
+
+# Ignore cache files
+*.cache
+.DS_Store
+node_modules/
