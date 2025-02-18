@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>URL Analytics</h1>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Short Code</th>
+        <th>Original URL</th>
+        <th>Click Count</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for url in shorturls %}
+        <tr>
+          <td>
+            <a href="{% url 'shortener:redirect' short_code=url.short_code %}">
+              {{ url.short_code }}
+            </a>
+          </td>
+          <td>
+            <a href="{{ url.long_url }}" target="_blank">{{ url.long_url }}</a>
+          </td>
+          <td>{{ url.click_count }}</td>
+          <td>{{ url.created_at|date:"Y-m-d H:i" }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No URLs found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>
+    <a href="{% url 'shortener:create' %}">Shorten another URL</a>
+  </p>
+{% endblock %}

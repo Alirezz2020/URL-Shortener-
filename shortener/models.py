@@ -13,8 +13,10 @@ def generate_short_code():
 
 class ShortURL(models.Model):
     long_url = models.URLField()
+    # Allow users to optionally specify a custom code; if left blank, one will be generated.
     short_code = models.CharField(max_length=10, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    click_count = models.PositiveIntegerField(default=0)  # For tracking clicks
 
     def save(self, *args, **kwargs):
         if not self.short_code:
