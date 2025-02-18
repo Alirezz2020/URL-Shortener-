@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Your Short URL</h1>
+  <p>
+    Original URL:
+    <a href="{{ shorturl.long_url }}" target="_blank">{{ shorturl.long_url }}</a>
+  </p>
+  <p>
+    Short URL:
+    <a href="{% url 'shortener:redirect' short_code=shorturl.short_code %}" target="_blank">
+      {{ request.scheme }}://{{ request.get_host }}{% url 'shortener:redirect' short_code=shorturl.short_code %}
+    </a>
+  </p>
+  <p>
+    <a href="{% url 'shortener:create' %}">Shorten another URL</a>
+  </p>
+{% endblock %}
